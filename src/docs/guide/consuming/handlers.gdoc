@@ -9,8 +9,14 @@ that the handler should send messages through.
 
 This is the most generic form of a message handler:
 {code}
-def handleMessage(def body, MessageContext context) {
-    // Do work
+package com.example
+
+class ExampleConsumer {
+    // ...
+
+    def handleMessage(def body, MessageContext context) {
+        // Do work
+    }
 }
 {code}
 
@@ -31,12 +37,18 @@ so that the handler does not need to handle the conversion.
 
 The following handlers would accept the converted Map:
 {code}
-def handleMessage(Map body, MessageContext context) {
-    // Do work
-}
+package com.example
 
-def handleMessage(def body, MessageContext context) {
-    // Since def is a generic type (Object)
+class ExampleConsumer {
+    // ...
+
+    def handleMessage(Map body, MessageContext context) {
+        // Do work
+    }
+
+    def handleMessage(def body, MessageContext context) {
+        // Since def is a generic type (Object)
+    }
 }
 {code}
 
